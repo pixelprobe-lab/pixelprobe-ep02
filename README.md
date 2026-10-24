@@ -1,3 +1,28 @@
+# EP02 v2：拆穿 3 張爆紅 AI 假圖 / Debunking 3 viral AI fakes
+
+## `forensics_viral.py`（新 new）
+對真實爆紅 AI 圖（教宗羽絨衣、川普被捕）與一張真實相機照片做鑑識。
+Runs forensics on real viral AI images (Pope puffer, Trump arrest) plus a real camera photo.
+
+| 方法 Method | 輸出 Output |
+|---|---|
+| EXIF／C2PA 簡易檢查 quick EXIF/C2PA check | `results.json → meta` |
+| 頻譜 FFT（高通 → 加窗 → 對數）spectrum | `fft_*.png`, `fft_peak_score` |
+| 雜訊殘差（減中值濾波）noise residual | `noise_*.png`, `noise_mean`, `noise_block_cv` |
+| 瑕疵特寫（不插值放大）flaw close-ups (nearest-neighbour zoom) | `crop_*.png` |
+
+```bash
+pip install -r requirements.txt
+python forensics_viral.py src out
+```
+參考結果 Reference results — noise_mean：真實 real 3.38 / 教宗 Pope 0.49 / 川普 Trump 0.85。
+FFT 峰值分數在這些經社群轉存的 JPEG 上差異不大（1.40–1.53），**不足以單獨判定**。
+FFT peak scores barely differ on these re-shared JPEGs (1.40–1.53) — **not conclusive on their own**.
+瑕疵框座標為人工標註 / flaw boxes are hand-annotated. 圖片授權見 Image credits: `src/CREDITS.md`.
+五角大廈假圖無合法原檔，未收錄 / The Pentagon fake is not included (no licensed copy).
+
+---
+
 # EP02：AI 生成圖怎麼抓？用 Python 看穿 4 個破綻
 
 [English below](#english)
