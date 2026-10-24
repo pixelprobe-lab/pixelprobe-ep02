@@ -1,0 +1,4 @@
+# 安裝方式 Install: pip install -r requirements.txt
+opencv-python-headless>=4.8  # 影像處理 image processing
+numpy>=1.24                 # 數值運算與 FFT numerical arrays & FFT
+pillow>=10.0                # 讀取 EXIF read EXIF metadata

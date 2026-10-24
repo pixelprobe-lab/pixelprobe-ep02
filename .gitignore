@@ -1,0 +1,7 @@
+# 程式輸出的圖片與結果 Generated images and results
+out/
+# Python 快取 Python cache
+__pycache__/
+*.pyc
+# 虛擬環境 Virtual environment
+.venv/
